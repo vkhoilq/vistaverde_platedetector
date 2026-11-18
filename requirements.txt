@@ -1,0 +1,8 @@
+# Runtime dependencies only: this is what Streamlit Community Cloud installs.
+# 1.49.0 is the floor: it is where st.button/st.image gained the `width`
+# parameter ("stretch"/"content") that app.py uses. `use_container_width`
+# is deprecated and is scheduled for removal.
+streamlit>=1.49.0,<2
+requests>=2.31
+pillow>=10.0
+python-dotenv>=1.0

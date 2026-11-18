@@ -1,0 +1,62 @@
+{
+  "processing_time": 78.564,
+  "results": [
+    {
+      "box": {
+        "xmin": 411,
+        "ymin": 233,
+        "xmax": 866,
+        "ymax": 331
+      },
+      "plate": "51F12345",
+      "region": "vn",
+      "score": 0.943,
+      "dscore": 0.901,
+      "candidates": [
+        "51F12345",
+        "51F1234S",
+        "51F1234G"
+      ],
+      "vehicle": {
+        "score": 0.918,
+        "type": "Sedan",
+        "box": {
+          "xmin": 210,
+          "ymin": 180,
+          "xmax": 1012,
+          "ymax": 702
+        }
+      }
+    },
+    {
+      "box": {
+        "xmin": 402,
+        "ymin": 512,
+        "xmax": 838,
+        "ymax": 604
+      },
+      "plate": "51F1234S",
+      "region": "vn",
+      "score": 0.712,
+      "dscore": 0.688,
+      "candidates": [
+        "51F1234S",
+        "51F12345"
+      ],
+      "vehicle": {
+        "score": 0.874,
+        "type": "Motorcycle",
+        "box": {
+          "xmin": 190,
+          "ymin": 470,
+          "xmax": 990,
+          "ymax": 940
+        }
+      }
+    }
+  ],
+  "filename": "plate.jpg",
+  "version": 1,
+  "camera_id": null,
+  "timestamp": "2026-11-12T03:41:58.120000Z"
+}

@@ -1,0 +1,9 @@
+# A DNS A record for $DOMAIN must point at this host before the certificate
+# can be issued. Caddy requests it automatically on startup.
+{$DOMAIN} {
+	reverse_proxy app:8501 {
+		# Streamlit streams its UI over a long-lived response; without this,
+		# Caddy's response buffering makes the page appear frozen.
+		flush_interval -1
+	}
+}

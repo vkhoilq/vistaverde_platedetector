@@ -1,0 +1,8 @@
+# Server binding and CORS are left to the runtime:
+# - Docker passes --server.address/--server.port/--server.headless/--server.enableCORS
+#   as CLI flags (see Dockerfile).
+# - Streamlit Community Cloud supplies its own binding and forces
+#   enableXsrfProtection = true.
+# Only settings that both environments honor belong in this file.
+[server]
+maxUploadSize = 20

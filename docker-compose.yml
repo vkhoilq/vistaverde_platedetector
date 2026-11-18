@@ -1,0 +1,39 @@
+# Vehicle plate complaint PoC.
+#
+# One-time setup:
+#   1. Create a DNS A record for DOMAIN pointing at this host's public IP.
+#   2. cp .env.example .env  and fill in PLATERECOGNIZER_TOKEN and DOMAIN.
+#   3. docker compose up -d
+# Caddy obtains the TLS certificate automatically once DNS resolves.
+# Then open https://$DOMAIN.
+
+services:
+  app:
+    build: .
+    env_file: .env
+    volumes:
+      # Bind-mounted so owners.csv and future output survive restarts.
+      - ./data:/app/data
+    expose:
+      - "8501"          # internal only; Caddy is the public entry point
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data        # certificates
+      - caddy_config:/config
+    environment:
+      # Interpolated by Compose from the same .env file.
+      - DOMAIN=${DOMAIN}
+    depends_on:
+      - app
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
